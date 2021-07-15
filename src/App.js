@@ -1,25 +1,20 @@
-import logo from './logo.svg';
+import React, {useState} from 'react'
+import Button from './components/button'
 import './App.css';
 
-function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+const App = () => {
+  const [display, setDisplay] = useState("");
+  
+  const handleClick = (text) => {
+    setDisplay(display + text);
+  }
+
+  return(
+    <section>
+      <input onChange={(event) => setDisplay(event.target.value)} value={display} />
+      <Button val='0' handleClick={(event) => handleClick(event.target.value)}/>
+      <Button val='1' handleClick={(event) => handleClick(event.target.value)}/>
+    </section>
   );
 }
-
 export default App;
